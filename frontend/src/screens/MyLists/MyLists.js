@@ -73,7 +73,7 @@ const [lists, setLists] = useState([])
                   <blockquote className="blockquote mb-0">
                     <p>{list.content}</p>
                     <footer className="blockquote-footer">
-                      Creater on - date
+                      Created on - date
                     </footer>
                   </blockquote>
                 </Card.Body>

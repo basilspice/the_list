@@ -3,6 +3,7 @@ const lists = require("./data/lists");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db")
 const userRoutes = require("./routes/userRoutes");
+const { errorHandler, notFound } = require("./middlewares/errorMiddleware");
 
 
 
@@ -25,6 +26,11 @@ app.get("/api/lists/:id", (req, res) => {
 
 app.use("/api/users", userRoutes);
 
+app.use(notFound)
+app.use(errorHandler)
+
 const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, () => console.log(`Server running on ${PORT}`));
+
+
