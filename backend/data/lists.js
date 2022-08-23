@@ -1,29 +1,29 @@
 const lists = [
     {
       _id: "1",
-      title: "Day 1 of college",
+      title: "Nighttime Camp",
       content:
-        "I made a few new friends and introduced myself to a lot of new teachers.",
-      category: "College",
+        "Pillow, Sleeping Bag, Lanterns, Hammock ",
+      category: "Canada",
     },
     {
       _id: "2",
-      title: "Learned some Node JS",
-      content: "Learned how to create a server in node JS and my first API",
-      category: "Learning",
+      title: "Daytime Camp",
+      content: "Chairs, 10x10, Table ",
+      category: "Canada",
     },
     {
       _id: "3",
-      title: "Watched some Anime",
-      content: "Finished 2 seasons of Attack on Titan and My Hero academia.",
-      category: "Entertainment",
+      title: "Food/Drinks",
+      content: "Stove, Pots, Pans, Utensils, Cooler",
+      category: "Canada",
     },
     {
       _id: 4,
-      title: "Started React JS",
+      title: "Bike Stuff",
       content:
-        "Made my first App in React JS, feels awesome to learn something new. I aim to be a full stack dev someday",
-      category: "Learning",
+        "Bike, Helmet, Goggles, Gloves, Pads, Allens, Spare Parts ",
+      category: "Canada",
     },
   ];
   
