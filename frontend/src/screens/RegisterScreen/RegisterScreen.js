@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
-// import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
 import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
-// import { register } from "../../actions/userActions";
+import { register } from "../../actions/userActions";
 import MainScreen from "../../components/MainScreen";
 import "./RegisterScreen.css";
-import axios from "axios";
 
 const RegisterScreen = () => {
   const [email, setEmail] = useState("");
@@ -19,42 +18,11 @@ const RegisterScreen = () => {
   const [confirmpassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState(null);
   const [picMessage, setPicMessage] = useState(null);
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
 
-
-  
-  const submitHandler = async (e) => {
-    e.preventDefault();
-
-    if (password !== confirmpassword) {
-      setMessage("Passwords Do Not Match");
-    } else {
-      setMessage(null);
-      try {
-        const config = {
-          headers: {
-            "Content-type": "application/json",
-          },
-        };
-
-        setLoading(true);
-        const { data } = await axios.post(
-          "/api/users",
-          {
-            name,
-            email,
-            password,
-            pic,
-          },
-          config
-        );
-        console.log(data);
-        setLoading(false);
-        localStorage.setItem("userInfo", JSON.stringify(data));
-      } catch (error) {}
-    }
-  };
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const userRegister = useSelector((state) => state.userRegister);
+  const { loading, error, userInfo } = userRegister;
 
   const postDetails = (pics) => {
     if (
@@ -67,9 +35,9 @@ const RegisterScreen = () => {
     if (pics.type === "image/jpeg" || pics.type === "image/png") {
       const data = new FormData();
       data.append("file", pics);
-      data.append("upload_preset", "notezipper");
-      data.append("cloud_name", "piyushproj");
-      fetch("https://api.cloudinary.com/v1_1/piyushproj/image/upload", {
+      data.append("upload_preset", "thelist");
+      data.append("cloud_name", "basilspice");
+      fetch("https://api.cloudinary.com/v1_1/basilspice/image/upload", {
         method: "post",
         body: data,
       })
@@ -83,6 +51,20 @@ const RegisterScreen = () => {
         });
     } else {
       return setPicMessage("Please Select an Image");
+    }
+  };
+  useEffect(() => {
+    if (userInfo) {
+      history.push("/mylists");
+    }
+  }, [history, userInfo]);
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    if (password !== confirmpassword) {
+      setMessage("Passwords do not match");
+    } else {
+      dispatch(register(name, email, password, pic));
     }
   };
 

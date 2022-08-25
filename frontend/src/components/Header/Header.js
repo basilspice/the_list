@@ -7,9 +7,24 @@ import {
   Navbar,
   NavDropdown,
 } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
+import { logout } from "../../actions/userActions";
 const Header = () => {
   const history = useHistory();
+
+  const dispatch = useDispatch();
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+  const logoutHandler = () => {
+    dispatch(logout());
+    history.push("/")
+  };
+
+  
+
+  
   return (
     <Navbar bg="primary" expand="lg" variant="dark">
       <Container>
@@ -31,13 +46,7 @@ const Header = () => {
             <NavDropdown title="Basil Breton" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action4">My Profile</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item
-                onClick={() => {
-                  localStorage.removeItem("userInfo");
-                  console.log("storage removed")
-                  history.push("/");
-                }}
-              >
+              <NavDropdown.Item onClick={logoutHandler}>
                 Logout
               </NavDropdown.Item>
             </NavDropdown>
