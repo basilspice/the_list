@@ -50,7 +50,7 @@ const deleteList = asyncHandler(async (req, res) => {
       throw new Error("List not Found");
     }
   });
-const updateList = asyncHandler(async (req, res) => {
+  const updateList = asyncHandler(async (req, res) => {
     const { title, content, category } = req.body;
   
     const list = await List.findById(req.params.id);

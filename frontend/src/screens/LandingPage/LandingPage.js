@@ -1,28 +1,44 @@
-import React from "react";
-
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Container, Row, Button } from "react-bootstrap";
-import './LandingPage.css'
-const LandingPage = () => {
+import "./LandingPage.css";
+function LandingPage({ history }) {
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
 
- 
+  useEffect(() => {
+    if (userInfo) {
+      history.push("/mylists");
+    }
+  }, [history, userInfo]);
 
   return (
     <div className="main">
       <Container>
-        <Row><div className="intro-text">
+        <Row>
+          <div className="intro-text">
             <div>
-                <h1 className="title">the_list</h1>
-                <p className="subtitle">camping made easier</p>
+              <h1 className="title">the_list</h1>
+              <p className="subtitle">camping made easier</p>
             </div>
             <div className="buttonContainer">
-                <a href='/login'>
-                    <Button size='lg' className='landingbutton'>Login</Button>
-                </a>
-                <a href='/register'>
-                    <Button size='lg' className='landingbutton'variant="outline-primary">Sign-Up</Button>
-                </a>
+              <a href="/login">
+                <Button size="lg" className="landingbutton">
+                  Login
+                </Button>
+              </a>
+              <a href="/register">
+                <Button
+                  size="lg"
+                  className="landingbutton"
+                  variant="outline-primary"
+                >
+                  Sign-Up
+                </Button>
+              </a>
             </div>
-            </div></Row>
+          </div>
+        </Row>
       </Container>
     </div>
   );

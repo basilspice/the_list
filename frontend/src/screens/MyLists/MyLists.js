@@ -10,7 +10,7 @@ import Loading from "../../components/Loading";
 
 import ErrorMessage from "../../components/ErrorMessage";
 
-const MyLists = () => {
+const MyLists = ({ search }) => {
   const dispatch = useDispatch();
   const listList = useSelector((state) => state.listList);
   const { loading, lists, error } = listList;
@@ -66,14 +66,13 @@ const MyLists = () => {
       )}
       {loading && <Loading />}
       {loadingDelete && <Loading />}
-      {loading && <Loading />}
-      {loadingDelete && <Loading />}
       {lists &&
         lists
           // .filter((filteredList) =>
-          //   filteredList.title.toLowerCase().includes(toLowerCase())
+          //   filteredList.title.toLowerCase().includes(search.toLowerCase())
           // )
           .reverse()
+
           .map((list) => (
             <Accordion defaultActiveKey={["0"]} key={list._id}>
               <Accordion.Item eventkey="0">
@@ -94,7 +93,8 @@ const MyLists = () => {
                       </Accordion.Button>
                     </span>
                     <div>
-                      <Button href={`/lists/${list._id}`}>Edit</Button>
+                      
+                      <Button href={`/api/lists/${list._id}`}>Edit</Button>
                       <Button
                         variant="danger"
                         className="mx-2"

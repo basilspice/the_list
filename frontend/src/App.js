@@ -7,6 +7,7 @@ import RegisterScreen from "./screens/RegisterScreen/RegisterScreen";
 import LoginScreen from "./screens/LoginScreen/LoginScreen";
 import CreateList from "./screens/CreateList/CreateList"
 import SingleList from "./screens/SingleList/SingleList";
+import ProfileScreen from "./screens/ProfileScreen/ProfileScreen";
 import { BrowserRouter, Route } from "react-router-dom";
 import { useState } from "react";
 const App = () => {
@@ -19,9 +20,10 @@ const App = () => {
         <Route path="/" component={LandingPage} exact />
         <Route path="/mylists" component={MyLists} />
         <Route path="/login" component={LoginScreen} />
+        <Route path="/profile" component={ProfileScreen} />
         <Route path="/register" component={RegisterScreen} />
         <Route path="/createlist" component={CreateList} />
-        <Route path="/list/:id" component={SingleList} />
+        <Route path="/lists/:id" component={SingleList} />
         <Route path="/mylists" component={() => <MyLists search={search} /> } />
       </main>
       <Footer />
