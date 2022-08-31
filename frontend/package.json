@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "homepage": "https://basilspice.github.io/the_list",
+  "homepage": "https://basilspice.github.io/the_list/",
   "version": "0.1.0",
   "private": true,
   "proxy": "http://127.0.0.1:4000",
