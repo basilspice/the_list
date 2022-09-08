@@ -1,9 +1,9 @@
 {
   "name": "frontend",
-  "homepage": "https://basilspice.github.io/the_list/",
+  "homepage": "https://BasilSpice-TheList.github.io",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://127.0.0.1:4000",
+  "proxy": "http://127.0.0.1:5000",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
